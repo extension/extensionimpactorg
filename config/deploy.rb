@@ -4,8 +4,8 @@ require 'capistrano/ext/multistage'
 
 require 'capatross'
 
-set :application, "homepage"
-set :repository,  "git@github.com:extension/homepage.git"
+set :application, "impact"
+set :repository,  "git@github.com:extension/extensionimpactorg.git"
 set :branch, "master"
 set :scm, "git"
 set :user, "pacecar"
@@ -30,10 +30,10 @@ namespace :deploy do
   task :link_and_copy_configs, :roles => :app do
     run <<-CMD
     rm -rf #{release_path}/wp-config.php &&
-    ln -nfs /services/homepage/shared/config/wp-config.php #{release_path}/wp-config.php &&
-    ln -nfs /services/homepage/shared/config/.htaccess #{release_path}/.htaccess &&
-    ln -nfs /services/homepage/shared/config/robots.txt #{release_path}/robots.txt &&
-    ln -nfs /services/homepage/shared/uploads #{release_path}/wp-content/uploads
+    ln -nfs /services/impact/shared/config/wp-config.php #{release_path}/wp-config.php &&
+    ln -nfs /services/impact/shared/config/.htaccess #{release_path}/.htaccess &&
+    ln -nfs /services/impact/shared/config/robots.txt #{release_path}/robots.txt &&
+    ln -nfs /services/impact/shared/uploads #{release_path}/wp-content/uploads
     CMD
   end
 
