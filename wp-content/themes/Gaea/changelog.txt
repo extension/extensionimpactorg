@@ -1,0 +1,221 @@
+*** Gaea Changelog ***
+07 November 2014- Version 1.0
+	Initial Release
+16 November 2014- Version 1.1
+	NEW! Event Registration Option added
+	FIXED! some styling bugs
+16 November 2014- Version 1.2
+	NEW! Orderby field added for staff shortcode
+	UPDATED! calendar updated.
+	NEW! Option to choose post type for homepage left column
+	FIXED! Events not showing which is not recurring
+	UPDATED! new shortcode editor given for after recent post section
+	FIXED! When tabs from homepage is removed container was broken
+09 December 2014- Version 1.3
+	NEW! Event date will show by default if no featured image set
+	NEW! Option to disable upcoming event counter at header and option to put any 	
+	custom text in there
+	FIXED! Seamless donation form style issue fixed
+	FIXED! Envato toolkit plugin clashing with theme options
+	FIXED! Bug on template home.php
+	NEW! Option to set links for partner logos
+	FIXED! Event countdown not working fixed
+	FIXED! Widget bottom margin for custom widgets
+	FIXED! style issue with the calendar
+	NEW! Option to choose category of post on all type of blog templates
+	FIXED! Passed Event not working properly
+	FIXED! issue with content on page templates like events, projects, gallery
+08 January 2015 - Version 1.4
+	NEW! Gallery feature extended with post format capabilities
+	NEW! Option in events template to list future and past events
+	NEW! Calendar now allow category filters and event preview options
+	FIXED! Registration modal box not opening after login/register
+	NEW! Gallery shortcode
+	UPDATED! jQuery Calendar plugin updated to latest version
+	NEW! Banner/slider option for project
+	NEW! Icon box shortcake now allow links addition
+	NEW! Event registration as a guest
+	FIXED! Menu hiding on window resize
+	FIXED! Page title hidden on one page menu scroll
+	NEW! Option to change Latest Project and Clients list title on Homepage
+	FIXED! Some small styling bugs
+03 February 2015 - Version 1.5
+	UPDATE! Sidebar on single page menu page is now visible
+	NEW! Social share options for all post types
+	NEW! 2 New Header Styles
+	NEW! Latest Gallery widget with option to choose category of gallery items
+	FIXED! Team widget in footer causing layout broken issue
+	FIXED! Some styling bugs
+	NEW! Video embedding shortcode
+	NEW! Option to upload Retina Logo
+	UPDATE! Some page load enhancements
+07 February 2015 - Version 1.5.1
+	FIXED! Background image issue in boxed version
+	FIXED! Style issue in boxed version header style 3
+20 February 2015 - Version 1.6
+	NEW! One click demo install
+	NEW! RTL language support added
+	NEW! Fonts typography and styling options added at Theme Options
+	UPDATED! Font Awesome icons
+	UPDATED! Recommended plugins class which will now allow to update revolution slider and paid events plugin with in the wp dashboard
+	UPDATED! Revolution Slider to v4.6.5
+	FIXED! Mobile menu problem from init.js
+	FIXED! Inside pages banner image, banner color not taking custom height
+	FIXED! Icon lists were coming with default bullets
+	Partner Logos on homepage can be of custom dimension now
+	FIXED! Shop and search widget in header wrong position while open
+	FIXED! Issue with single project template
+	FIXED! Homepage projects column meta field was not working
+27 February 2015 - Version 1.6.1
+	FIXED! Bug with homepage recent projects column
+	FIXED! Calendar not working when topper events countdown is disabled
+22 April 2015 - Version 1.7
+	NEW! Option to disable css3 animations from whole website
+	NEW! Event address option to take to direction Google Map
+	FIXED! Share bar float issue on some pages
+	NEW! Staff Categories Taxonomy added
+	FIXED! Drop caps styling issue
+	FIXED! Category not working for events grid template
+	FIXED! Pagination showing for a single page of events as well
+	NEW! Sticky header height option
+	FIXED! Customiser not working
+	NEW! Form builder added
+28 April 2015 - Version 1.7.1
+	UPDATED! Theme framework and included plugins for the XSS vulnerability
+22 May 2015 - Version 1.8
+	NEW! Page builder added along with 2 prebuilt homepages
+	NEW! Option to select sidebar position at Theme Options globally or per page/post
+	FIXED! Gallery slider type height issue when images are of different sizes
+	FIXED! Sticky header conflicting when it is disabled in theme options
+	FIXED! Menu getting hidden on screen resize
+	IMPROVED! Page load speed by minifying the css and js files and remove @import of css in style.css
+	UPDATED! Revolution slider plugin to latest version
+	UPDATED! Woo commerce templates
+	UPDATED! TGM plugin class to allow plugin updates from Appearance > Install plugins
+
+01 July 2015 - Version 1.8.1
+	FIXED! prettyPhoto XSS fix
+	UPDATED! Font Awesome Icons to v4.3
+
+04 September, 2015 - Version 1.8.2
+	FIXED! WooCommerce pages not taking the page header styles
+	FIXED! WooCommerce Pages not taking the sidebar selected
+	NEW! Alternative text option fields added for social sharing icons at Theme Options
+	NEW! Option to choose maximum event per date on calendar
+	FIXED! Some woo commerce styling bugs
+	FIXED! Menu styling bugs
+	NEW! Option to add text next to mobile nav icon and change its color and font
+	FIXED! Latest projects columns issue it was showing only 3 projects
+	FIXED! Fonts not appearing in shortcodes
+	FIXED! Contact form shortcode not working
+	UPDATED! Revolution Slider to latest version
+	UPDATED! SMK Sidebar recommendation to Pojo Sidebar
+	FIXED! Address icon still showing on single event page when no address is there for event
+	NEW! Option to change calendar header style
+	FIXED! Mobile menu not working on scroll on touch devices
+	FIXED! Masonry blog date issue for posts
+
+15 September, 2015 - Version 1.8.3
+	FIXED! Toggle opacity issue on future past events page
+	NEW! Option to choose whether the event will be shown till start date or end date
+	NEW! Backend shortcode page with all shortcode code inserted so user can copy paste them
+	NEW! Top event counter is now linked to upcoming event
+	FIXED! Issue when more than map shortcode is on a single page
+	NEW! Shortcode copier added at Appearance > Shortcodes
+
+21 January, 2016 - Version 1.9
+	FIXED! Gallery page template share first gallery post URL instead of gallery page URL
+	FIXED! Banner options not working for page set as posts page at settings
+	NEW! Redefined Theme Options
+		- Option to add scripts before </head> and before </body> at General
+		- Enable pinch zoom on touch devices at Responsive
+		- Option for content background, 100% content width at Layout > Content
+		- Styling options for header bg, inner page header and sticky header
+		- Option to upload apple icons at Logo > Favicon Options
+		- Styling options for menu and mobile menu
+		- Styling options for secondary bar
+		- 100% footer width and other styling options
+		- Option to select sidebar width and default sidebars for all pages
+		- Styling icons for share buttons
+		- Full set of options for blog and single post pages
+		- Full set of options for staff posts
+	NEW! Staff single post page
+	FIXED! Woo commerce pages not getting banner images and sidebars
+	UPDATED! Font awesome icons to latest version 4.5
+	UPDATED! Revolution Slider to latest version
+	FIXED! Email field not working for Contact Form shortcake
+	FIXED! Some styling issues
+	NEW! Email options for staff posts
+	FIXED! Line height issue with main menu when no logo image uploaded
+	FIXED! Issue with once page navigation page template when pages using page builder content is used
+	UPDATED! Style.css to remove Google font import to speed opmization
+
+27 April, 2016 - Version 1.9.1
+	UPDATED! Redux Framework to latest version
+	UPDATED! Meta box plugin to latest version
+	FIXED! Time selection not working for 24 hours format
+	FIXED! Border bottom custom color not working
+	FIXED! A bug with recurring events
+	FIXED! Posts list widget showing current date for all posts
+	FIXED! Some styling bugs
+	UPDATED! Revolution Slider to latest version
+	UPDATED! PayPal currency options for Event payment
+
+06 June, 2016 - Version 1.9.2
+	UPDATED! Revolution Slider to latest version
+	UPDATED! Font Awesome icons to latest version
+	UPDATED! TGM Plugin Activation Class to latest version
+
+15 July, 2016 - Version 2.0
+	NEW! Design options for pages/posts
+	NEW! Option to add Google API Key for Maps in the theme at Theme Options > Map API
+	UPDATED! Demo Content
+	UPDATED! Revolution Slider
+	UPDATED! Redux Framework
+	UPDATED! Meta Box Plugin
+	UPDATED! Meta Box show Hide plugin
+	UPDATED! Meta Box Group plugin
+	UPDATED! Font Awesome Icons Kit
+	FIXED! Password protected pages not working
+
+11 October, 2016 - Version 2.1
+	FIXED! Some styling bugs
+	FIXED! Removed image upload limit for event slider and partner logos on homepage
+	UPDATED! Revolution Slider demo data folder
+	UPDATED! Map API key support for back end event map
+	UPDATED! Language .pot file
+	UPDATED! MetaBox plugin
+	UPDATED! Redux Framework
+
+16 November, 2016 - Version 2.2
+	NEW! Demo data included for page builder
+	NEW! Page builder widgets for events future/past, events list and more
+	UPDATED! Code for PHP7.0 compatibility
+	FIXED! Custom height for pages banner/header not working
+	FIXED! Some styling bugs
+	UPDATED! Styling compatibility for Give Plugin
+
+08 December, 2016 - Version 2.2.1
+	UPDATED! Slider Revolution plugin to version 5.3.1
+	FIXED! Event Calendar event’s link not passing correct date value
+
+07 January, 2017 - Version 2.2.2
+	Security Update
+	UPDATED! Revolution Slier to latest version
+
+25 February, 2017 - Version 2.3
+	NEW! 5 new home page designs
+	FIXED! Staff page builder widget not showing staff details in popup
+	FIXED! Option to hide page title for inner page header at Theme Options > Header not working
+	FIXED! Custom color for counter text and number not working in Counter page builder widget
+	FIXED! Some styling issues
+	UPDATED! Custom widgets to support new PHP version
+
+05 May, 2017 - Version 2.3.1
+	UPDATED! Revolution Slider plugin
+	UPDATED! Demo data
+	UPDATED! Child theme
+	FIXED! Event category color will now be used for recurring events as well
+	FIXED! Prettyphoto fix for SSL
+	FIXED! Youtube/Vimeo embed function for SSL
+	FIXED! Some styling bugs

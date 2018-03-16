@@ -1,0 +1,4 @@
+[12-Mar-2018 00:24:05 CST6CDT] PHP Fatal error:  Uncaught Error: Call to undefined function get_header() in /home/exten232/public_html/wp-content/themes/Gaea/index.php:1
+Stack trace:
+#0 {main}
+  thrown in /home/exten232/public_html/wp-content/themes/Gaea/index.php on line 1
