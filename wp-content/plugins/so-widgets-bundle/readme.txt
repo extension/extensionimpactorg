@@ -2,8 +2,8 @@
 Tags: bundle, widget, button, slider, image, carousel, price table, google maps, tinymce, social links
 Requires at least: 4.2
 Tested up to: 4.9.1
-Stable tag: 1.11.3
-Build time: 2018-01-10T11:22:18+02:00
+Stable tag: 1.11.7
+Build time: 2018-03-23T11:39:23+02:00
 License: GPLv3 or later
 Contributors: gpriday, braam-genis
 Donate link: https://siteorigin.com/downloads/contribution/
@@ -64,6 +64,43 @@ The SiteOrigin Widgets Bundle is the perfect platform to build widgets for your 
 3. An example of the button widget.
 
 == Changelog ==
+
+= 1.11.7 - 23 March 2018 =
+* Image: Add title alignment setting.
+* Button: Add max-width to ensure buttons are responsive.
+* Hero: New filter for frame content 'siteorigin_hero_frame_content'
+* Features: Don't set margin for one column left/right feature.
+* Updated widget icons.
+* Updated google web fonts.
+
+= 1.11.6 - 14 March 2018 =
+* Hero: Add responsive height settings.
+* Added pikaday jQuery plugin and register pikaday scripts for front end too.
+* Features: item float clearing and padding mobile specific.
+
+= 1.11.5 - 13 March 2018 =
+* Features: Better feature padding removal on row ends.
+* Sliders: WCAG 2.4.4 compliance.
+* Tabs: Hide widget title when no title is set.
+* TinyMCE field: Added setting for `wpautop` processing which is on by default.
+* Contact: When Gradient disabled, set basic background.
+* Beaver Builder compat: Only set SOWB widget form values when editing a SOWB widget.
+* Contact: Option to log submitter's IP address.
+* Add random number and set `more_entropy` to increase chance of unique form ids.
+* Contact: Added 'tel' field type which should show numeric keyboard on mobile.
+* Media field: Trigger change event when removing selected image.
+* Renamed the PHP LESS parser to `SiteOrigin_LessC` to avoid conflicts.
+* Date range field: Prevent initializing date range fields multiple times and ensure date format consistent.
+* Register pikaday as common script and enqueue as needed in fields.
+* Google Map: Show satellite map type.
+* Translation: Add context to From strings.
+* Add missing semicolons to Ionicons codes.
+
+= 1.11.4 - 7 February 2018 =
+* Slider: Add playsinline for Video backgrounds for iOS.
+* Repeater field: Trigger change events for repeater when adding, removing or duplicating items.
+* TinyMCE field: Removed special handling for TinyMCE fields when retrieving data. Just use field value directly.
+* Fixed build overwriting some CSS files.
 
 = 1.11.3 - 10 January 2018 =
 * Hero: Add margin-top to so-widget-sow-button for spacing.
