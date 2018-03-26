@@ -5,7 +5,7 @@ if(!function_exists('add_action')){
 	exit;
 }
 
-define('LOGINIZER_VERSION', '1.3.8');
+define('LOGINIZER_VERSION', '1.3.9');
 define('LOGINIZER_DIR', WP_PLUGIN_DIR.'/'.basename(dirname(LOGINIZER_FILE)));
 define('LOGINIZER_URL', plugins_url('', LOGINIZER_FILE));
 define('LOGINIZER_PRO_URL', 'https://loginizer.com/features#compare');
@@ -31,6 +31,7 @@ function loginizer_activation(){
 				`count` int(10) NOT NULL DEFAULT '0',
 				`lockout` int(10) NOT NULL DEFAULT '0',
 				`ip` varchar(255) NOT NULL DEFAULT '',
+				`url` varchar(255) NOT NULL DEFAULT '',
 				UNIQUE KEY `ip` (`ip`)
 			) ENGINE=MyISAM DEFAULT CHARSET=utf8;";
 
@@ -159,6 +160,13 @@ global $wpdb;
 		
 	}
 	
+	// Is it less than 1.3.9 ?
+	if($version < 139){
+		
+		$wpdb->query("ALTER TABLE ".$wpdb->prefix."loginizer_logs  ADD `url` VARCHAR(255) NOT NULL DEFAULT '' AFTER `ip`;");
+	
+	}
+	
 	// Save the new Version
 	update_option('loginizer_version', LOGINIZER_VERSION);
 	
@@ -229,22 +237,28 @@ function loginizer_load_plugin(){
 	
 	// Set the current IP
 	$loginizer['current_ip'] = lz_getip();
+	
+	// Is Brute Force Disabled ?
+	$loginizer['disable_brute'] = get_option('loginizer_disable_brute');
 
-	/* Filters and actions */
+	// Filters and actions
+	if(empty($loginizer['disable_brute'])){
 	
-	// Use this to verify before WP tries to login
-	// Is always called and is the first function to be called
-	//add_action('wp_authenticate', 'loginizer_wp_authenticate', 10, 2);// Not called by XML-RPC
-	add_filter('authenticate', 'loginizer_wp_authenticate', 10001, 3);// This one is called by xmlrpc as well as GUI
+		// Use this to verify before WP tries to login
+		// Is always called and is the first function to be called
+		//add_action('wp_authenticate', 'loginizer_wp_authenticate', 10, 2);// Not called by XML-RPC
+		add_filter('authenticate', 'loginizer_wp_authenticate', 10001, 3);// This one is called by xmlrpc as well as GUI
+		
+		// Is called when a login attempt fails
+		// Hence Update our records that the login failed
+		add_action('wp_login_failed', 'loginizer_login_failed');
+		
+		// Is called before displaying the error message so that we dont show that the username is wrong or the password
+		// Update Error message
+		add_action('wp_login_errors', 'loginizer_error_handler', 10001, 2);
+		add_action('woocommerce_login_failed', 'loginizer_woocommerce_error_handler', 10001);
 	
-	// Is called when a login attempt fails
-	// Hence Update our records that the login failed
-	add_action('wp_login_failed', 'loginizer_login_failed');
-	
-	// Is called before displaying the error message so that we dont show that the username is wrong or the password
-	// Update Error message
-	add_action('wp_login_errors', 'loginizer_error_handler', 10001, 2);
-	add_action('woocommerce_login_failed', 'loginizer_woocommerce_error_handler', 10001);
+	}
 	
 	// Is the premium features there ?
 	if(file_exists(LOGINIZER_DIR.'/premium.php')){
@@ -560,11 +574,13 @@ function loginizer_login_failed($username){
 
 	if(empty($lz_cannot_login) && empty($loginizer['ip_is_whitelisted']) && empty($loginizer['no_loginizer_logs'])){
 		
+		$url = @addslashes((!empty($_SERVER['HTTPS']) ? 'https://' : 'http://').$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
+		
 		$result = lz_selectquery("SELECT * FROM `".$wpdb->prefix."loginizer_logs` WHERE `ip` = '".$loginizer['current_ip']."';");
 		
 		if(!empty($result)){
 			$lockout = floor((($result['count']+1) / $loginizer['max_retries']));
-			$sresult = $wpdb->query("UPDATE `".$wpdb->prefix."loginizer_logs` SET `username` = '".$username."', `time` = '".time()."', `count` = `count`+1, `lockout` = '".$lockout."' WHERE `ip` = '".$loginizer['current_ip']."';");
+			$sresult = $wpdb->query("UPDATE `".$wpdb->prefix."loginizer_logs` SET `username` = '".$username."', `time` = '".time()."', `count` = `count`+1, `lockout` = '".$lockout."', `url` = '".$url."' WHERE `ip` = '".$loginizer['current_ip']."';");
 			
 			// Do we need to email admin ?
 			if(!empty($loginizer['notify_email']) && $lockout >= $loginizer['notify_email']){
@@ -587,7 +603,7 @@ Loginizer';
 				@wp_mail($mail['to'], $mail['subject'], $mail['message']);
 			}
 		}else{
-			$insert = $wpdb->query("INSERT INTO `".$wpdb->prefix."loginizer_logs` SET `username` = '".$username."', `time` = '".time()."', `count` = '1', `ip` = '".$loginizer['current_ip']."', `lockout` = '0';");
+			$insert = $wpdb->query("INSERT INTO `".$wpdb->prefix."loginizer_logs` SET `username` = '".$username."', `time` = '".time()."', `count` = '1', `ip` = '".$loginizer['current_ip']."', `lockout` = '0', `url` = '".$url."';");
 		}
 	
 		// We need to add one as this is a failed attempt as well
@@ -1191,6 +1207,35 @@ function loginizer_page_brute_force(){
 	$loginizer['blacklist'] = get_option('loginizer_blacklist');
 	$loginizer['whitelist'] = get_option('loginizer_whitelist');
 	
+	// Disable Brute Force
+	if(isset($_POST['disable_brute_lz'])){
+		
+		// Save the options
+		update_option('loginizer_disable_brute', 1);
+		
+		$loginizer['disable_brute'] = 1;
+		
+		echo '<div id="message" class="updated"><p>'
+			. __('The Brute Force Protection feature is now disabled', 'loginizer')
+			. '</p></div><br />';
+		
+	}
+	
+	// Enable brute force
+	if(isset($_POST['enable_brute_lz'])){
+			
+		// Save the options
+		update_option('loginizer_disable_brute', 0);
+		
+		$loginizer['disable_brute'] = 0;
+		
+		echo '<div id="message" class="updated"><p>'
+			. __('The Brute Force Protection feature is now enabled', 'loginizer')
+			. '</p></div><br />';
+		
+	}
+	
+	// The Brute Force Settings
 	if(isset($_POST['save_lz'])){
 		
 		$max_retries = (int) lz_optpost('max_retries');
@@ -1600,7 +1645,8 @@ function loginizer_page_brute_force(){
 				<th scope="row" valign="top" style="background:#EFEFEF;"><?php echo __('Attempted Username','loginizer'); ?></th>
 				<th scope="row" valign="top" style="background:#EFEFEF;"><?php echo __('Last Failed Attempt  (DD/MM/YYYY)','loginizer'); ?></th>
 				<th scope="row" valign="top" style="background:#EFEFEF;"><?php echo __('Failed Attempts Count','loginizer'); ?></th>
-				<th scope="row" valign="top" style="background:#EFEFEF;" width="150"><?php echo __('Lockouts Count','loginizer'); ?></th>
+				<th scope="row" valign="top" style="background:#EFEFEF;"><?php echo __('Lockouts Count','loginizer'); ?></th>
+				<th scope="row" valign="top" style="background:#EFEFEF;" width="150"><?php echo __('URL Attacked','loginizer'); ?></th>
 			</tr>
 			<?php
 			
@@ -1633,6 +1679,9 @@ function loginizer_page_brute_force(){
 						</td>
 						<td>
 							'.$iv['lockout'].'
+						</td>
+						<td>
+							'.$iv['url'].'
 						</td>
 					</tr>';
 				}
@@ -1705,6 +1754,19 @@ function loginizer_page_brute_force(){
 			</tr>
 		</table><br />
 		<input name="save_lz" class="button button-primary action" value="<?php echo __('Save Settings','loginizer'); ?>" type="submit" />
+		<?php
+		
+		if(empty($loginizer['disable_brute'])){		
+			
+			echo '<input name="disable_brute_lz" class="button action" value="'.__('Disable Brute Force Protection','loginizer').'" type="submit" style="float:right" />';
+			
+		}else{
+			
+			echo '<input name="enable_brute_lz" class="button button-primary action" value="'.__('Enable Brute Force Protection','loginizer').'" type="submit" style="float:right" />';
+			
+		}
+		
+		?>
 		</form>
 	
 		</div>

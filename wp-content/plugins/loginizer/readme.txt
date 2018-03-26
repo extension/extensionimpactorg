@@ -2,8 +2,8 @@
 Contributors: loginizer
 Tags: access, admin, Loginizer, login, logs, ban ip, failed login, ip, whitelist ip, blacklist ip, failed attempts, lockouts, hack, authentication, login, security, rename login url, rename login, rename wp-admin, secure wp-admin, rename admin url, secure admin
 Requires at least: 3.0
-Tested up to: 4.8
-Stable tag: 1.3.8
+Tested up to: 4.9
+Stable tag: 1.3.9
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl.html
 
@@ -64,6 +64,10 @@ That's it. You're done!
 3. Loginizer Brute Force Settings page
 
 == Changelog ==
+
+= 1.3.9 =
+* [Feature] Added an option to Enable / Disable Brute Force checks.
+* [Feature] Added the feature to log the URL of the page from which the brute force attempt is being made.
 
 = 1.3.8 =
 * [Feature] Added an option to Delete the entire Blacklist / Whitelist IP Ranges.

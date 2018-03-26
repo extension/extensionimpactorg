@@ -1,10 +1,10 @@
-=== Facebook Open Graph, Google+ and Twitter Card Tags ===
+=== Open Graph for Facebook, Google+ and Twitter Card Tags ===
 Contributors: webdados, wonderm00n
 Donate link: http://bit.ly/donate_fb_opengraph
 Tags: facebook, open graph, open graph protocol, share, social, meta, rss, twitter card, twitter, schema, google+, g+, google, google plus, image, like, seo, search engine optimization, woocommerce, yoast seo, wordpress seo, woocommerce, subheading, php7
 Requires at least: 4.5
 Tested up to: 5.0-alpha-42610
-Stable tag: 2.2.3.1
+Stable tag: 2.2.4
 
 Inserts Facebook Open Graph, Google+/Schema.org, Twitter and SEO Meta Tags into your WordPress Website for more efficient sharing results.
 
@@ -22,7 +22,7 @@ It allows the user to choose which tags are, or not, included and also the defau
 
 BETA: It's also possible to add a overlay logo to the image. The plugin will resize and crop the original image to 1200x630 and then overlay the chosen 1200x630 PNG file over it. Can be usefull to add your brand to the image that shows up on Facebook shared links.
 
-Our settings page is discreetly kept under "Options", as it should, instead of taking up premium sapce on the main menu bar with colored, non WordPress styled, icons.
+Our settings page is discreetly kept under "Options", as it should, instead of taking up premium space on the main menu bar with colored, non WordPress styled, icons.
 
 = The (Facebook) Open Graph Tags that this plugin inserts are: =
 
@@ -84,9 +84,9 @@ Our settings page is discreetly kept under "Options", as it should, instead of t
 
 == Installation ==
 
-1. Use the included automatic install feature on your WordPress admin panel and search for “Facebook Open Graph, Google+ and Twitter Card Tags”.
+1. Use the included automatic install feature on your WordPress admin panel and search for “Open Graph for Facebook, Google+ and Twitter Card Tags”.
 2. Activate the plugin through the `Plugins` menu in WordPress
-3. Go to `Options`, `Facebook Open Graph, Google+ and Twitter Card Tags` to set it up
+3. Go to `Options`, `Open Graph for Facebook, Google+ and Twitter Card Tags` to set it up
 
 == Frequently Asked Questions ==
 
@@ -115,6 +115,12 @@ Do NOT ask us support on this. There is [a blog post on our website](https://www
 = Facebook says "The following required properties are missing: fb:app_id". Should I worry? =
 
 No. Move along.
+
+= How can I share my posts or products as Rich Pins on Pinterest? =
+
+Pinterest can read Open Graph tags, so no extra tags are needed to share your articles or WooCommerce products as Rich Pins.
+
+You need however to apply in order to whitelist your domain on Pinterest. Head to [this page](https://developers.pinterest.com/docs/rich-pins/overview/) and follow the instructions starting with "Set up". When in the validator, enter your URL, hit "Validate" and then choose "HTML tags" and hit "Apply now". It's then up to Pinterest to accept your application or not.
 
 = Can this plugin get content from "random plugin"? =
 
@@ -150,6 +156,10 @@ We DO NOT provide email support for this plugin. If you send us an email asking 
 2. Or we can give you a quote on premium email/phone support if you prefer to
 
 == Changelog ==
+
+= 2.2.4 =
+* Added Pinterest information on que FAQ
+* Changed name to "Facebook Open Graph, Google+ and Twitter Card Tags"
 
 = 2.2.3.1 =
 * Tested with WooCommerce 3.3
